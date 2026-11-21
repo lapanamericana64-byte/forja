@@ -50,12 +50,12 @@ window.APPS = [
       { src: "img/descargador-gif.jpg", alt: "Creador de GIFs con la línea de tiempo" },
       { src: "img/descargador-x.jpg", alt: "Pantalla de X con un GIF descargado" },
     ],
-    descarga: "https://github.com/lapanamericana64-byte/forja/releases/download/descargador-v1.0/Descargador.apk",
-    peso: "75 MB",
-    version: "1.0",
+    descarga: "https://github.com/lapanamericana64-byte/forja/releases/download/descargador-v1.1/Descargador.apk",
+    peso: "72 MB",
+    version: "1.1",
     requisitos: "Android 10 o superior",
     aviso: "Descarga solo contenido que tengas derecho a guardar.",
-    novedades: ["Primera versión"],
+    novedades: ["Avisa cuando hay una versión nueva y se actualiza desde la propia app"],
   },
 ];
 
