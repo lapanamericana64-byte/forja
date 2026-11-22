@@ -1,9 +1,9 @@
 {
   "descargador": {
-    "version": "1.1",
-    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/descargador-v1.1/Descargador.apk",
-    "bytes": 75336518,
-    "notas": "- Avisa cuando hay una versión nueva y se actualiza desde la propia app"
+    "version": "1.2",
+    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/descargador-v1.2/Descargador.apk",
+    "bytes": 75337534,
+    "notas": "- El aviso de versión nueva es más fiable con datos móviles"
   },
   "pulso": {
     "version": "1.2",
