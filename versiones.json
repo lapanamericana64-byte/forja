@@ -6,9 +6,9 @@
     "notas": "- Avisa cuando hay una versión nueva y se actualiza desde la propia app"
   },
   "pulso": {
-    "version": "1.1",
-    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/pulso-v1.1/Pulso.apk",
-    "bytes": 3884845,
-    "notas": "- Avisa cuando hay una versión nueva y se actualiza desde la propia app"
+    "version": "1.2",
+    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/pulso-v1.2/Pulso.apk",
+    "bytes": 3884849,
+    "notas": "- El aviso de versión nueva es más fiable con datos móviles"
   }
 }
