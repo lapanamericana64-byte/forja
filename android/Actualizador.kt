@@ -33,6 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
@@ -61,12 +62,35 @@ class Actualizador(private val ctx: Context, private val app: String, val nombre
         visible = true
     }
 
-    private fun buscar(): Nueva? {
-        val c = URL(API).openConnection() as HttpURLConnection
+    /** Primero la web (sin límite de consultas); si no responde, la API de GitHub (60 por hora por IP). */
+    private fun buscar(): Nueva? =
+        runCatching { deWeb(leer(WEB)) }.getOrElse { deApi(leer(API, "application/vnd.github+json")) }
+
+    private fun leer(url: String, acepta: String? = null): String {
+        val c = URL(url).openConnection() as HttpURLConnection
         c.connectTimeout = 8000
         c.readTimeout = 8000
-        c.setRequestProperty("Accept", "application/vnd.github+json")
-        val lista = c.inputStream.bufferedReader().use { JSONArray(it.readText()) }
+        c.useCaches = false
+        acepta?.let { c.setRequestProperty("Accept", it) }
+        try {
+            if (c.responseCode != 200) error("HTTP ${c.responseCode}")
+            return c.inputStream.bufferedReader().use { it.readText() }
+        } finally {
+            c.disconnect()
+        }
+    }
+
+    /** versiones.json: { "pulso": { "version", "url", "bytes", "notas" }, ... } — lo escribe publicar.py. */
+    internal fun deWeb(texto: String): Nueva? {
+        val o = JSONObject(texto).getJSONObject(app)
+        val v = o.getString("version")
+        val url = o.getString("url")
+        if (!esMayor(v, versionActual) || !url.endsWith(".apk")) return null
+        return Nueva(v, o.optString("notas").trim(), url, o.optLong("bytes"))
+    }
+
+    private fun deApi(texto: String): Nueva? {
+        val lista = JSONArray(texto)
         var mejor: Nueva? = null
         for (i in 0 until lista.length()) {
             val r = lista.getJSONObject(i)
@@ -151,7 +175,8 @@ class Actualizador(private val ctx: Context, private val app: String, val nombre
     }
 
     companion object {
-        const val API = "https://api.github.com/repos/lapanamericana64-byte/forja/releases?per_page=50"
+        const val WEB = "https://lapanamericana64-byte.github.io/forja/versiones.json"
+        const val API ="https://api.github.com/repos/lapanamericana64-byte/forja/releases?per_page=50"
 
         fun esMayor(a: String, b: String): Boolean {
             val x = a.split('.').map { it.filter(Char::isDigit).toIntOrNull() ?: 0 }

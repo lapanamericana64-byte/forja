@@ -6,8 +6,12 @@ Uso (desde la carpeta de la web):
 Hace tres cosas:
   1. sube el APK a GitHub como Release (etiqueta <app>-v<versión>),
   2. actualiza en apps.js el enlace, el tamaño, la versión y las novedades de esa app,
-  3. guarda y sube el cambio, así la web se actualiza sola en uno o dos minutos.
+  3. rehace versiones.json (de ahí leen las apps si hay versión nueva),
+  4. guarda y sube el cambio, así la web se actualiza sola en uno o dos minutos.
+
+Solo rehacer versiones.json:  python publicar.py --versiones
 """
+import json
 import os
 import re
 import subprocess
@@ -27,7 +31,36 @@ def js(s):
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
+def versiones():
+    """Rehace versiones.json con la última versión publicada de cada app (lo leen las apps para avisar)."""
+    salida = subprocess.run([GH, "api", f"repos/{REPO}/releases?per_page=100"], cwd=AQUI, check=True,
+                            capture_output=True, text=True, encoding="utf-8").stdout
+    datos = {}
+    for r in json.loads(salida):
+        if r.get("draft") or r.get("prerelease") or "-v" not in r["tag_name"]:
+            continue
+        app, version = r["tag_name"].rsplit("-v", 1)
+        apk = next((a for a in r.get("assets", []) if a["name"].endswith(".apk")), None)
+        if not apk:
+            continue
+        if app in datos and tupla(datos[app]["version"]) >= tupla(version):
+            continue
+        datos[app] = {"version": version, "url": apk["browser_download_url"], "bytes": apk["size"],
+                      "notas": (r.get("body") or "").strip()}
+    with open(os.path.join(AQUI, "versiones.json"), "w", encoding="utf-8") as f:
+        json.dump(dict(sorted(datos.items())), f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print("versiones.json:", ", ".join(f"{a} {d['version']}" for a, d in sorted(datos.items())))
+
+
+def tupla(v):
+    return tuple(int("".join(c for c in p if c.isdigit()) or 0) for p in v.split("."))
+
+
 def main():
+    if len(sys.argv) == 2 and sys.argv[1] == "--versiones":
+        versiones()
+        return
     if len(sys.argv) < 5:
         print(__doc__)
         sys.exit(1)
@@ -58,7 +91,8 @@ def main():
 
     with open(ruta, "w", encoding="utf-8") as f:
         f.write(texto[: m.start()] + bloque + texto[m.end():])
-    correr("git", "add", "apps.js")
+    versiones()
+    correr("git", "add", "apps.js", "versiones.json")
     correr("git", "commit", "-m", f"{app} {version}")
     correr("git", "push")
     print(f"\nListo. {app} {version} ({peso}) ya está en la web: https://{REPO.split('/')[0]}.github.io/forja/")
