@@ -77,11 +77,11 @@ window.APPS = [
       { src: "img/folio-documento.jpg", alt: "Un contrato abierto con sus páginas y los botones Compartir y Guardar" },
       { src: "img/folio-busqueda.jpg", alt: "Búsqueda que encuentra un recibo por una palabra de su texto" },
     ],
-    descarga: "",
-    peso: "",
-    version: "",
+    descarga: "https://github.com/lapanamericana64-byte/forja/releases/download/folio-v1.0/Folio.apk",
+    peso: "3,4 MB",
+    version: "1.0",
     requisitos: "Android 10 o superior, con Google Play Services",
-    novedades: [],
+    novedades: ["Primera versión"],
   },
 ];
 

@@ -5,6 +5,12 @@
     "bytes": 75337534,
     "notas": "- El aviso de versión nueva es más fiable con datos móviles"
   },
+  "folio": {
+    "version": "1.0",
+    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/folio-v1.0/Folio.apk",
+    "bytes": 3580310,
+    "notas": "- Primera versión"
+  },
   "pulso": {
     "version": "1.2",
     "url": "https://github.com/lapanamericana64-byte/forja/releases/download/pulso-v1.2/Pulso.apk",
