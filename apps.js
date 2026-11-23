@@ -57,6 +57,32 @@ window.APPS = [
     aviso: "Descarga solo contenido que tengas derecho a guardar.",
     novedades: ["El aviso de versión nueva es más fiable con datos móviles"],
   },
+  {
+    id: "folio",
+    nombre: "Folio",
+    lema: "Escanea papeles a PDF, sin anuncios.",
+    descripcion:
+      "Haces una foto a una factura, un recibo o un contrato y Folio recorta la hoja, la endereza y la guarda en PDF. Además lee el texto, así que luego encuentras cualquier documento buscando lo que dice.",
+    funciones: [
+      "Detecta los bordes de la hoja y la deja como escaneada",
+      "Varias páginas en un mismo PDF",
+      "Lee el texto sin internet: búscalo, cópialo o compártelo",
+      "Comparte el PDF por WhatsApp o guárdalo en Descargas",
+      "Importa fotos que ya tengas en la galería",
+    ],
+    icono: "img/icono-folio.png",
+    colores: ["#FFB547", "#FF7A3D", "#FFD166"],
+    capturas: [
+      { src: "img/folio-documentos.jpg", alt: "Lista de documentos escaneados con sus miniaturas" },
+      { src: "img/folio-documento.jpg", alt: "Un contrato abierto con sus páginas y los botones Compartir y Guardar" },
+      { src: "img/folio-busqueda.jpg", alt: "Búsqueda que encuentra un recibo por una palabra de su texto" },
+    ],
+    descarga: "",
+    peso: "",
+    version: "",
+    requisitos: "Android 10 o superior, con Google Play Services",
+    novedades: [],
+  },
 ];
 
 /* Ideas en camino. Se muestran sin botón de descarga. Deja la lista vacía para ocultar la sección. */
