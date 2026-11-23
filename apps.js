@@ -7,20 +7,23 @@ window.APPS = [
   {
     id: "pulso",
     nombre: "Pulso",
-    lema: "Tu música, sin anuncios.",
+    lema: "Tu música y tus vídeos, sin anuncios.",
     descripcion:
-      "Un reproductor para la música que ya tienes en el móvil. Sigue sonando con la pantalla apagada, se controla desde la notificación y los auriculares, y recuerda la canción y el segundo exacto donde lo dejaste.",
+      "Un reproductor para la música y los vídeos que ya tienes en el móvil. La música sigue sonando con la pantalla apagada y se controla desde la notificación y los auriculares. Los vídeos se ven a pantalla completa con gestos, y Pulso recuerda el segundo exacto donde dejaste cada canción y cada vídeo.",
     funciones: [
       "Suena en segundo plano y en la pantalla de bloqueo",
       "Canciones, álbumes, artistas, carpetas y listas propias",
       "Favoritos, cola editable, aleatorio y repetir",
+      "Vídeos con «Seguir viendo», gestos de brillo, volumen y avance, y ventana flotante",
+      "Velocidad, subtítulos y pista de audio en los vídeos",
       "Temporizador para dormir",
-      "Abre audios desde WhatsApp o Archivos",
+      "Abre audios y vídeos desde WhatsApp o Archivos",
     ],
     icono: "img/icono-pulso.png",
     colores: ["#19E3A1", "#0EA5E9", "#7C3AED"],
     capturas: [
       { src: "img/pulso-canciones.jpg", alt: "Lista de canciones de Pulso con el mini reproductor abajo" },
+      { src: "img/pulso-videos.jpg", alt: "Sección de vídeos con «Seguir viendo» y la lista de vídeos" },
       { src: "img/pulso-reproductor.jpg", alt: "Reproductor a pantalla completa con carátula y controles" },
       { src: "img/pulso-albumes.jpg", alt: "Cuadrícula de álbumes" },
     ],
