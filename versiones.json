@@ -1,4 +1,10 @@
 {
+  "cuentas": {
+    "version": "1.0",
+    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/cuentas-v1.0/Cuentas.apk",
+    "bytes": 2398351,
+    "notas": "- Primera versión"
+  },
   "descargador": {
     "version": "1.2",
     "url": "https://github.com/lapanamericana64-byte/forja/releases/download/descargador-v1.2/Descargador.apk",
