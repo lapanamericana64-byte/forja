@@ -83,6 +83,32 @@ window.APPS = [
     requisitos: "Android 10 o superior, con Google Play Services",
     novedades: ["Primera versión"],
   },
+  {
+    id: "cuentas",
+    nombre: "Cuentas",
+    lema: "Para saber a dónde se va el dinero.",
+    descripcion:
+      "Apunta tus gastos e ingresos en pesos en un par de toques y ve el resumen del mes: cuánto entró, cuánto salió y en qué categoría se te fue más. Todo se queda en tu teléfono: funciona sin internet, sin registrarte y sin anuncios.",
+    funciones: [
+      "Balance del mes con ingresos y gastos",
+      "Gastos por categoría, de mayor a menor, con su porcentaje",
+      "Movimientos agrupados por día; tócalos para editar o borrar",
+      "Categorías propias además de las de siempre",
+      "Pasa de un mes a otro para comparar",
+    ],
+    icono: "img/icono-cuentas.png",
+    colores: ["#2BD19A", "#12B886", "#0B8F6A"],
+    capturas: [
+      { src: "img/cuentas-mes.jpg", alt: "Resumen del mes con el balance y los gastos por categoría" },
+      { src: "img/cuentas-apuntar.jpg", alt: "Formulario para apuntar un gasto con monto, categoría y nota" },
+      { src: "img/cuentas-movimientos.jpg", alt: "Lista de movimientos agrupados por día" },
+    ],
+    descarga: "",
+    peso: "",
+    version: "1.0",
+    requisitos: "Android 10 o superior",
+    novedades: ["Primera versión"],
+  },
 ];
 
 /* Ideas en camino. Se muestran sin botón de descarga. Deja la lista vacía para ocultar la sección. */
