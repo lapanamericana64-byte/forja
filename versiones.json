@@ -18,9 +18,9 @@
     "notas": "- Primera versión"
   },
   "pulso": {
-    "version": "1.2",
-    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/pulso-v1.2/Pulso.apk",
-    "bytes": 3884849,
-    "notas": "- El aviso de versión nueva es más fiable con datos móviles"
+    "version": "1.3",
+    "url": "https://github.com/lapanamericana64-byte/forja/releases/download/pulso-v1.3/Pulso.apk",
+    "bytes": 4563827,
+    "notas": "- Nueva sección de Vídeos: tus vídeos sin anuncios, con «Seguir viendo»\n- Gestos en los vídeos: doble toque para saltar 10 s, brillo, volumen y avance deslizando, mantener para 2×\n- Ventana flotante, velocidad, subtítulos y pista de audio"
   }
 }
